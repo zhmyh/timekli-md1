@@ -1,0 +1,40 @@
+<form class="uk-form-stacked" [formGroup]="add_people_form" (ngSubmit)="onSubmit()">
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-text">Name</label>
+        <div class="uk-form-controls">
+            <input class="form-control" class="uk-input" formControlName="name" name="name" type="text" placeholder="Some text...">
+            <div *ngIf="add_people_form.controls['name'].invalid && (add_people_form.controls['name'].dirty || add_people_form.controls['name'].touched)" class="alert alert-danger">
+                Name has errors
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-text">Email</label>
+        <div class="uk-form-controls">
+            <input class="form-control" class="uk-input" formControlName="email"  name="email" type="text" placeholder="Some text...">
+            <div *ngIf="add_people_form.controls['email'].invalid && (add_people_form.controls['email'].dirty || add_people_form.controls['email'].touched)" class="alert alert-danger">
+                Email has errors
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-select">Select</label>
+        <div class="uk-form-controls">
+            <select class="uk-select" formControlName="countries" multiple uk-form-custom="target: true" >
+                <option *ngFor="let c of countries;" value="{{c.id}}">{{ c.name.common }}</option>
+            </select>
+            <div *ngIf="add_people_form.controls['countries'].invalid && (add_people_form.controls['countries'].dirty || add_people_form.controls['countries'].touched)" class="alert alert-danger">
+                Countries has errors
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-margin">
+        <button class="uk-button uk-button-primary" href="#" type="submit">Save</button>
+    </div>
+
+
+</form>
